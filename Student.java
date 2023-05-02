@@ -1,35 +1,118 @@
-package com.statictest.program;
+package com.test.collection;
 
-public class Student {
-	private static int rollno; // static variable
-	private String name;
-	private float per;
-	private static String college; //static variable
-	 
-	static //static block
-	{
-		rollno=100;
-		college="Eight";
-	}
+import java.util.Objects;
+
+public class Student implements Comparable<Student>{
+	int roll_no;
+	String name;
+	double per;
+	
 	public Student()
 	{
-		name="unknown";
+		roll_no=20;
+		name="Nimish";
+		per=90.67;
 	}
-	public Student (String name,float p)
+	
+	public Student(int r,String n,double p)
 	{
-		rollno=++rollno;
-		this.name=name;
+		roll_no=r;
+		name=n;
 		per=p;
 	}
 	
-	static public int getrollno() //static method
+	public void display()
 	{
-		return rollno;
+		System.out.println("\n Student Details are:");
+		System.out.printf("\n Roll no:"+roll_no);
+		System.out.printf("\n Name:"+name);
+		System.out.printf("\n Percentage:"+per);
 	}
-	public void display() {
-		System.out.println(rollno+""+name+""+per+""+college);
+
+	/*public void getRollno()                //Accessor Method
+	{
+		roll_no=10;
+		
+	}
+	
+	public void getName()
+	{
+		name="Ajinkya";
+		
+	}
+	
+	public void getPerc()
+	{
+		per=87.56;
+		
+	}*/
+	
+	public int getRollno()                //Accessor Method
+	{
+		return roll_no;
+		
+	}
+	
+	public String getName()
+	{
+		return name;
+		
+	}
+	
+	public double getPerc()
+	{
+		return per;
+		
+	}
+	
+	public void setRollno(int r)       //Mutator
+	{
+		roll_no=r;
+	}
+	
+	public void setName(String n)
+	{
+		name=n;
+	}
+	
+	public void setPerc(int p)
+	{
+		per=p;
+	}
+	
+	public String toString()
+	 {
+		return "Rollno="+roll_no+"\n Name="+name+"\n Per="+per;
+	 }
+	 
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(this==obj)
+			return true;
+		
+		if(obj==null);
+		return false;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(per,name);
+		
+	}
+	
+	public int compareTo(Student obj)
+	{
+		if(this.roll_no>obj.roll_no)
+			return 1;
+		else if(this.roll_no<obj.roll_no)
+			return -1;
+		else
+			return 0;
+		
 	}
 
 }
-
 
